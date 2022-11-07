@@ -28,7 +28,7 @@ public class Calculatorwindow implements ActionListeners {
 		textfield = new JTextField();
 		textfield.setBounds(50, 35, 300, 50);
 		textfield.setFont(myFont);
-		textfield.disable();
+		//textfield.disable();
 		
 		frame.add(textfield);
 		frame.setVisible(true);
