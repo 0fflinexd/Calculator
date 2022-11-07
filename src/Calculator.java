@@ -102,6 +102,7 @@ public class Calculator
 		        int sum = multi(num1, num2);
 		                
 		        System.out.println("Your answer is: " + sum);
+		        System.out.println("Your answer is: " + sum);
 		        continue;
 		    }
 		    else
