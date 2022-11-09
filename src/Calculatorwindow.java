@@ -11,6 +11,7 @@ public class Calculatorwindow implements ActionListener
 	JButton addButton,subButton,mulButton,divButton;
 	JButton decButton, equButton, delButton, clrButton, negButton;
 	JPanel panel;
+	JLabel lastInput;
 	
 	Font myFont = new Font("Arial", Font.BOLD,30);
 	
@@ -21,13 +22,20 @@ public class Calculatorwindow implements ActionListener
 	{
 		frame = new JFrame("Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(420, 550);
+		frame.setSize(420, 600);
 		frame.setLayout(null);
-		
+		frame.setResizable(false);
+					
 		textfield = new JTextField();
-		textfield.setBounds(50, 35, 300, 50);
+		textfield.setBounds(50, 50, 300, 50);
 		textfield.setFont(myFont);
+		textfield.setHorizontalAlignment(SwingConstants.RIGHT);
 		textfield.disable();
+		
+		lastInput = new JLabel("test");
+		lastInput.setBounds(50,0,300,50);
+		lastInput.setFont(myFont);
+		lastInput.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		addButton = new JButton("+");
 		subButton = new JButton("-");
@@ -64,12 +72,12 @@ public class Calculatorwindow implements ActionListener
 			numberButtons[i].setFocusable(false);
 		}
 		
-		negButton.setBounds(50,430,80,50);
-		delButton.setBounds(160,430,80,50);
-		clrButton.setBounds(270,430,80,50);
+		negButton.setBounds(50,450,80,50);
+		delButton.setBounds(160,450,80,50);
+		clrButton.setBounds(270,450,80,50);
 		
 		panel = new JPanel();
-		panel.setBounds(50, 100, 300, 300);
+		panel.setBounds(50, 120, 300, 300);
 		panel.setLayout(new GridLayout(4,4,10,10));
 		
 		panel.add(numberButtons[7]);
@@ -97,6 +105,7 @@ public class Calculatorwindow implements ActionListener
 		frame.add(delButton);
 		frame.add(clrButton);
 		frame.add(textfield);
+		frame.add(lastInput);
 		frame.setVisible(true);
 		
 	}
@@ -124,24 +133,33 @@ public class Calculatorwindow implements ActionListener
 			num1 = Double.parseDouble(textfield.getText());
 			operator = '+';
 			textfield.setText("");
+			String last =Double.toString(num1);
+			lastInput.setText(last+"+");
+			
 		}
 		if(e.getSource()==subButton) 
 		{
 			num1 = Double.parseDouble(textfield.getText());
 			operator = '-';
 			textfield.setText("");
+			String last =Double.toString(num1);
+			lastInput.setText(last+"-");
 		}
 		if(e.getSource()==mulButton) 
 		{
 			num1 = Double.parseDouble(textfield.getText());
 			operator = '*';
 			textfield.setText("");
+			String last =Double.toString(num1);
+			lastInput.setText(last+"*");
 		}
 		if(e.getSource()==divButton) 
 		{
 			num1 = Double.parseDouble(textfield.getText());
 			operator = '/';
 			textfield.setText("");
+			String last =Double.toString(num1);
+			lastInput.setText(last+"/");
 		}
 		if(e.getSource()==equButton) 
 		{
